@@ -5,6 +5,7 @@ const flash =  require("connect-flash");
 const path = require('path');
 const bodyparser = require('body-parser');
 const nunjucks = require('nunjucks');
+const paciente = require('./routes/paciente')
 const user = require('./databases/postgres')
 const post = require('./databases/mongo')
 const agenda = require('./databases/redis')
@@ -38,10 +39,8 @@ const agenda = require('./databases/redis')
         next()
     })
 
-    
-//Rotas
-//criando as rotas
-
+    //Rotas
+    app.use('/paciente', paciente)
 
 const port = 6006;
 app.listen(port,()=>{

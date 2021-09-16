@@ -1,0 +1,36 @@
+.layout-section{
+    background-color: rgba(196, 196, 196, 0.253);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 150px 200px 200px 150px;
+    grid-gap: 50px;
+    padding: 0;
+}
+.layout-header{
+    background: rgb(85, 6, 6);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+}
+.layout-header nav{
+    width: 90%;
+    border: 1px solid white;
+}
+
+.layout-aside{
+    background: rgb(182, 117, 117);
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+}
+.layout-main{
+    background: rgb(49, 49, 49); 
+    grid-column: 2 / -1;
+    grid-row: 2 / 4;
+}
+.layout-footer{
+    background: black;
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+}

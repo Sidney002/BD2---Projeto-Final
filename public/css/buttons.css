@@ -1,0 +1,57 @@
+a{
+    color: inherit;
+}
+.button{
+    font-size: 14px;
+    display: inline-block;
+    background: rgb(30, 14, 37);
+    border: 1px solid rgb(63, 28, 68);
+    border-radius: .8em;
+    box-sizing: border-box;
+    padding: .5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    width: 120px;
+    overflow: hidden;
+    transition: background .5s linear;
+}
+.small{
+    width: 80px;
+    font-size: 12px;
+}
+.large{
+    width: 180px;
+}
+.circle{
+    height: 40px;
+    width:  40px;
+    border-radius: 50%;
+}
+.button:hover{
+    background: rgb(74, 11, 104);
+}
+.vacuo{
+    background: transparent;
+    background-attachment: scroll;
+}
+.vazado{
+    background: rgb(255, 255, 255);
+    color: rgba(30, 14, 37, 0.301);
+}
+.vazado:hover{
+    background: rgba(30, 14, 37, 0.301);
+    color: white;
+}
+.menu-buttons{
+    text-decoration: none;
+    text-transform: uppercase;
+    list-style: none;
+    color: inherit;
+    transition: all .5s;box-sizing: border-box;
+}
+.menu-buttons:hover{
+    display: inline-block;
+    font-weight: bold;
+    background: rgba(143, 28, 192, 0.267);
+}

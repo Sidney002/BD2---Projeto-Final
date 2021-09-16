@@ -1,0 +1,50 @@
+body{
+    background: url(/img/skyrim3.png);
+    background-size: cover;
+    background-attachment: fixed;
+    color: rgb(245, 240, 240);
+    height: 100vh;
+    text-align: center;
+}
+h1,h2,h3{
+    text-shadow: 0 0 10px black;
+}
+.menu-vertical{
+    background: rgb(30, 14, 37);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 7%;
+    box-sizing: border-box;
+    padding-top: 4em;
+    padding-right: 25px;
+}
+.menu-vertical ul{
+    box-sizing: border-box;
+}
+.menu-vertical nav li{
+    list-style: none;
+    transform: rotate(270deg);
+}
+.menu-vertical nav li + li{
+    margin-top: 6em;
+}
+
+main{
+margin-left: 8%;
+}
+section{
+    width: 90%;
+    margin: auto;
+    border: 1px double rgb(179, 179, 179) ;
+    border-radius: 1.3em;
+    padding: 1em 2em;
+}
+.buttons-section{
+    
+    background: rgba(119, 93, 131, 0.192);
+}
+.buttons-section div a{
+    margin: 0 2em 0;
+}

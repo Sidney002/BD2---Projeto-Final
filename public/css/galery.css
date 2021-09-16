@@ -1,0 +1,79 @@
+.galery{
+    width: 80vw;
+    background: transparent;
+    margin: .8em auto;
+    border: 0;
+}
+.galery-main-content{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 80vw;
+    border: 1px solid white;
+    border-radius: 2em;
+
+}
+.galery-main{
+    height: 60vh;
+    width: 80vw;
+    border-radius: 2em;
+    animation: slide 15s infinite reverse;
+    animation-play-state: running;
+    margin: 0;
+}
+.galery-card{
+    height: 150px;
+    width: 16%;
+    margin: 2px 1.5% 2px 0;
+    border-radius: 2em;
+}
+.galery div + div{
+    overflow: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 176px;
+    width: 80vw;
+    display: inline-block;
+}
+.galery div + div::-webkit-scrollbar {
+    width: 2px;               /* width of the entire scrollbar */
+  }
+  
+.galeryy div + div::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+  }
+  
+.galery div+ div::-webkit-scrollbar-thumb {
+    background-color: rgb(30, 14, 37);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+   
+  }
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    22%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-80.6vw);
+    }
+    47%{
+        transform: translateX(-80.6vw);
+    }
+    50%{
+        transform: translateX(-160.6vw);
+    }
+    72%{
+        transform: translateX(-160.6vw);
+    }
+    75%{
+        transform: translateX(-240.6vw);
+    }
+    97%{
+        transform: translateX(-240.6vw);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
