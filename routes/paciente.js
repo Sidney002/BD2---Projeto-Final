@@ -5,12 +5,8 @@ router.get('/', (req,res)=>{
     res.render('base')
 })
 
-router.get('/logar', (req,res)=>{
+router.get('/test', (req,res)=>{
     res.render('index')
-})
-router.get('/blabla', (req, res)=> {
-    
-    res.render('cadastrar')
 })
 
 module.exports = router

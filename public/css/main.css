@@ -1,50 +1,37 @@
-body{
-    background: url(/img/skyrim3.png);
-    background-size: cover;
-    background-attachment: fixed;
-    color: rgb(245, 240, 240);
-    height: 100vh;
-    text-align: center;
+body, html{
+    margin: 0;
+    padding: 0;
+    background: aliceblue;
 }
-h1,h2,h3{
-    text-shadow: 0 0 10px black;
+.menu-horizontal{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    border: 1px solid red;
+    background: rgb(1, 1, 83);
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
-.menu-vertical{
-    background: rgb(30, 14, 37);
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 7%;
-    box-sizing: border-box;
-    padding-top: 4em;
-    padding-right: 25px;
+.menu-logo{
+    color: aliceblue;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3em;
 }
-.menu-vertical ul{
-    box-sizing: border-box;
+.menu-logo span{
+    color: red;
 }
-.menu-vertical nav li{
+.logo-container{
+    width: 20%;
+}
+.menu-horizontal ul{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.menu-horizontal ul li{
     list-style: none;
-    transform: rotate(270deg);
-}
-.menu-vertical nav li + li{
-    margin-top: 6em;
-}
-
-main{
-margin-left: 8%;
-}
-section{
-    width: 90%;
-    margin: auto;
-    border: 1px double rgb(179, 179, 179) ;
-    border-radius: 1.3em;
-    padding: 1em 2em;
-}
-.buttons-section{
-    
-    background: rgba(119, 93, 131, 0.192);
-}
-.buttons-section div a{
-    margin: 0 2em 0;
+    color: white;
 }

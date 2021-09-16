@@ -47,11 +47,9 @@ a{
     text-decoration: none;
     text-transform: uppercase;
     list-style: none;
-    color: inherit;
-    transition: all .5s;box-sizing: border-box;
+    color: white;
+    transition: all .5s;
 }
 .menu-buttons:hover{
-    display: inline-block;
-    font-weight: bold;
-    background: rgba(143, 28, 192, 0.267);
+   color: red;
 }

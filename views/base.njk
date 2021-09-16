@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/main.css">    
     <link rel="stylesheet" href="/css/galery.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <title>CSS Modelos</title>
+    <title>Mais Saude</title>
 </head>
 <body>
-    <header class="menu-vertical">
-        <nav>
+    <header class="menu-horizontal">
+            <div class="logo-container"><a href="/" class="menu-logo">Mais <span>Saúde</span></a></div>
             <ul>
-                <li><a href="#" class="menu-buttons">Home</a></li>
-                <li><a href="#" class="menu-buttons">Sobre</a></li>
-                <li><a href="#" class="menu-buttons">Modelos</a></li>
-                <li><a href="#" class="menu-buttons">Contato</a></li>
-                <li><a href="#" class="menu-buttons">Entrar</a></li>
+                <li><a href="Sobre" class="menu-buttons">Sobre</a></li>
+                <li><a href="/Ver-UBS" class="menu-buttons">Ver UBS</a></li>
+                <li><a href="/Entrar" class="menu-buttons">Entrar</a></li>
             </ul>
-        </nav>
-    </header>
-    {% block exemplo %}
+        </nav></header>
+    <main>
+        {% block conteudo %}
 
-    {% endblock exemplo%}
+        {% endblock conteudo %}
+    </main>
 </body>
 </html>
