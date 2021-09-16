@@ -4,8 +4,8 @@ a{
 .button{
     font-size: 14px;
     display: inline-block;
-    background: rgb(30, 14, 37);
-    border: 1px solid rgb(63, 28, 68);
+    background: rgb(0, 0, 29);
+    border: 1px solid rgb(0, 36, 77);
     border-radius: .8em;
     box-sizing: border-box;
     padding: .5em;
@@ -14,7 +14,9 @@ a{
     text-align: center;
     width: 120px;
     overflow: hidden;
+    color: aliceblue;
     transition: background .5s linear;
+    cursor: pointer;
 }
 .small{
     width: 80px;
@@ -29,7 +31,7 @@ a{
     border-radius: 50%;
 }
 .button:hover{
-    background: rgb(74, 11, 104);
+    background: rgb(19, 60, 107);
 }
 .vacuo{
     background: transparent;
@@ -51,5 +53,5 @@ a{
     transition: all .5s;
 }
 .menu-buttons:hover{
-   color: red;
+   color: rgb(168, 168, 168);
 }

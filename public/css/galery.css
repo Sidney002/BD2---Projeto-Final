@@ -4,6 +4,14 @@
     margin: .8em auto;
     border: 0;
 }
+.galery a{
+    text-decoration: none;
+    transition: all linear 1s;
+}
+.galery a:hover{
+    text-decoration: none;
+    background: rgb(72, 77, 82);
+}
 .galery-main-content{
     display: inline-block;
     overflow: hidden;
@@ -11,6 +19,7 @@
     width: 80vw;
     border: 1px solid white;
     border-radius: 2em;
+    border: 1px solid green;
 
 }
 .galery-main{
@@ -19,35 +28,50 @@
     border-radius: 2em;
     animation: slide 15s infinite reverse;
     animation-play-state: running;
-    margin: 0;
+    text-align: center;
+    background-color: gray;
 }
 .galery-card{
-    height: 150px;
     width: 16%;
     margin: 2px 1.5% 2px 0;
-    border-radius: 2em;
+    border-radius: 8px;
+    border: 1px solid gray;
 }
-.galery div + div{
+.galery .galery-card{
     overflow: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    height: 176px;
+    height: 210px;
     width: 80vw;
-    display: inline-block;
+    display: flex;
 }
-.galery div + div::-webkit-scrollbar {
-    width: 2px;               /* width of the entire scrollbar */
+.galery .galery-card::-webkit-scrollbar {
+    height: 8px;           /* width of the entire scrollbar */
   }
   
-.galeryy div + div::-webkit-scrollbar-track {
+.galeryy .galery-card::-webkit-scrollbar-track {
     background: transparent;        /* color of the tracking area */
   }
   
-.galery div+ div::-webkit-scrollbar-thumb {
-    background-color: rgb(30, 14, 37);    /* color of the scroll thumb */
+.galery .galery-card::-webkit-scrollbar-thumb {
+    background-color: rgb(6, 79, 107);    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
    
   }
+.card-item{
+    border: 1px solid pink;
+    height: 198px;
+    background: rgb(35, 91, 136);
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 0 1px;
+    padding: 0 40px;
+}
+.card-item h4, small{
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+}
 @keyframes slide {
     0% {
         transform: translateX(0);
