@@ -13,11 +13,21 @@
      .then(()=>console.log("Cliente Conectado"))
      .catch(err => console.log("err.stack"))
   
- async function setNewUser(nome,email, senha, nascimento){
-     const newUser = "INSERT INTO crudblog (nome,email,senha,nascimento) VALUES ($1, $2, $3, $4)"
-     client.query(newUser,[nome, email, senha, nascimento])
-     console.log("usuario cadastrado com sucesso!")
+ async function setNewUser(obj){
+     if (obj.tipo== "paciente") {
+
+        const paciente = "INSERT INTO paciente (nome, cpf, datanasc, dataadmissao, cargo, salario) VALUES ($1, $2, $3, $4, $5, $6)"
+        client.query(paciente,[obj.nome, obj.cpf, obj.senha, obj.email, obj.telefone, obj.rua, obj.bairro, obj.cidade, obj.nascimento, obj.funcao, obj.salario])
+        console.log("Paciente cadastrado com sucesso!")
+     } else {
+
+        const funcionario = "INSERT INTO funcionario (nome, cpf, datanasc, dataadmissao, cargo, salario) VALUES ($1, $2, $3, $4, $5, $6)"
+        client.query(funcionario,[obj.nome, obj.cpf, obj.senha, obj.email, obj.sus, obj.telefone, obj.sexo, obj.nascimento, obj.rua, obj.bairro, obj.cidade])
+        console.log("Funcionario cadastrado com sucesso!")
+     }
+     
  }
+ setNewUser();
  async function getUser(email) {
      const res = await client.query(`SELECT * FROM crudblog WHERE email=$1`,[email])
   
