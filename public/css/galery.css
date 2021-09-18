@@ -6,7 +6,7 @@
 }
 .galery a{
     text-decoration: none;
-    transition: all linear 1s;
+    transition: all ease-in .5s;
 }
 .galery a:hover{
     text-decoration: none;

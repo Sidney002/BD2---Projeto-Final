@@ -7,8 +7,8 @@
 {% endblock signup %}
 {% block conteudo %}
     <div class="form">
-        <form action="/paciente/cadastro" method="post" class="cadastro">
-        <h2>Cadastrar Paciente</h2>
+        <form action="/funcionario/cadastro" method="post" class="cadastro">
+        <h2>Cadastrar Funcionário</h2>
         <br>
         <label><span>Nome:</span><input required type="text" autofocus minlength="2" maxlength="40" placeholder="Digite seu nome completo" name="nome"></label>
         <br>
@@ -20,21 +20,18 @@
         <br>
         <label><span>Telefone:</span><input required type="tel" minlength="9" maxlength="11" placeholder="Digite seu numero de telefone" name="telefone"></label>
         <br>
-        <label><span>Cartão SUS:</span><input required pattern="\d{3}-\d{4}\-\d{4}-\d{4}" type="number" minlength="15" maxlength="15" placeholder="Digite seu do cartão do SUS: xxx xxxx xxxx xxxx" name="SUS"></label>
-        <br>
         <input required type="text" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="Digite um CPF no formato: xxx.xxx.xxx-xx">
         <p>Endereço:</p>
         <label><span>Rua:</span><input required type="text" minlength="5" placeholder="Rua ex - numero" name="rua"></label>
         <label><span>Bairro:</span><input required type="text" minlength="5" placeholder="Bairro" name="bairro"></label>
         <label><span>Cidade:</span><input required type="text" minlength="5" placeholder="Cidade" name="cidade"></label>
         <br>
-        <p>Sexo:</p>
-        <label><input  class="radio" name="sexo" type="radio" value="Feminino">Feminino</input></label>
-        <label><input class="radio" name="sexo" type="radio" value="Masculino">Masculino</input></label>
-        <label><input class="radio" name="sexo" type="radio" value="outro">Outro</input></label>
-        <br>
         <p>Data de nascimento:</p>
         <label><input required name="data" type="date"></label>
+        <label><span>Função:</span><input required type="text" minlength="4" maxlength="20" placeholder="Digite o seu cargo na UBS" name="função"></label>
+        <label><span>Salario:</span><input required type="number" placeholder="Digite o valor de seu salário" name="salario"></label>
+        <p>Data de Admissão:</p>
+        <label><span>Data de Admissão:</span><input required type="date" name="dataadmissao"></label>
         <br>
         <input type="submit" class="button small" value="Entrar">
         

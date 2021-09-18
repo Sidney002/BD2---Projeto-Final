@@ -1,0 +1,26 @@
+{% extends 'logado/logado.njk'%}
+
+{%block perfil%}
+    <li><a href="/paciente/sair" class="menu-buttons" >Sair</a></li>
+{%endblock perfil%}
+
+{% block conteudo%}
+    <div class="main-card">
+        <div class="dados">
+            <h2>Meus Dados</h2>
+            <p>Nome: </p>
+            <p>Telefone: </p>
+            <p>Email: </p>
+            <p>Sexo: </p>
+            <h4>Endereço</h4>
+            <p>Rua :</p>
+            <p>Bairro: </p>
+            <p>Cidade: </p>
+            <a href="#" type="submit" class="button" >Editar</a>
+        </div>
+        <div>
+            <a href="/paciente/Agendamentos" type="submit" class="button large" >Ver Agenda</a>
+            <a href="/paciente/Agendar" type="submit" class="button large" >Agendar Consulta</a>
+        </div>
+    </div>
+{% endblock conteudo%}

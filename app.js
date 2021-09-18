@@ -6,6 +6,7 @@ const path = require('path');
 const bodyparser = require('body-parser');
 const nunjucks = require('nunjucks');
 const paciente = require('./routes/paciente')
+const funcionario = require('./routes/funcionario')
 const user = require('./databases/postgres')
 const post = require('./databases/mongo')
 const agenda = require('./databases/redis')
@@ -41,6 +42,7 @@ const agenda = require('./databases/redis')
 
     //Rotas
     app.use('/paciente', paciente)
+    app.use('/funcionario', funcionario)
 
 const port = 6006;
 app.listen(port,()=>{

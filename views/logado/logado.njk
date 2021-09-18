@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/main.css">    
+    <link rel="stylesheet" href="/css/galery.css">
+    <title>Mais Saude</title>
+</head>
+<body>
+    <header class="menu-horizontal">
+            <div class="logo-container"><a href="/paciente/" class="menu-logo">Mais<span>Saúde</span></a></div>
+            <ul>
+                <li><a href="/paciente/Agendamentos" class="menu-buttons">Agendamentos</a></li>
+                <li><a href="/paciente/Ver-UBS" class="menu-buttons">Ver UBS</a></li>
+                {%block perfil%}
+                <li><a href="/paciente/Perfil" class="menu-buttons" >Meu Perfil</a></li>
+                {%endblock perfil%}
+
+                
+            </ul>
+        </nav></header>
+    <main>
+        {% block conteudo %}
+
+        {% endblock conteudo %}
+    </main>
+    <footer>
+        <p>@TS - Tecnologia e Consultoria </p>
+    </footer>
+</body>
+</html>

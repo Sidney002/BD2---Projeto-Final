@@ -24,6 +24,11 @@ body::-webkit-scrollbar-thumb {
     border-radius: 20px;       /* roundness of the scroll thumb */
    
   }
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
 .menu-horizontal{
     width: 100%;
     height: 13vh;
@@ -84,6 +89,37 @@ main .card p{
     text-align: justify;
     
 }
+main .main-card{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+.main-card div{
+    width: 90%;
+    margin: 10px;
+    padding: 0 20px 10px;
+}
+.main-card .news{
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-bottom: 34px;
+    color: rgb(247, 254, 255);
+    background: rgb(12, 42, 87);
+    min-height: 213px;
+    font-size: 1.2em;
+}
+
+.main-card .dados{
+    border: 1px solid rgb(18, 18, 165);
+    border-radius: 8px;
+}
+.main-card div+div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}
 .form{
     width: 80%;
     margin: 35px auto;
@@ -96,14 +132,32 @@ main .card p{
     width: 40%;
     margin: 0 auto;
 }
-.form input{
+.form input,textarea,select{
     width: 400px;
     margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 5px;
+    border: .5px solid rgb(14, 71, 97);
 }
-.form h2{
-
+.form textarea{
+    height: 150px;
+    resize: none;
 }
-
+.form input:focus, textarea:focus,select:focus{
+    border: 1px solid rgb(17, 128, 172);
+}
+.form span{
+    display: none;
+}
+.form .cadastro {
+    border: 1px solid gray;
+    border-radius: 8px;
+    width: 800px;
+    display: inline-block;
+}
+.cadastro .radio{
+    width: 50px;
+}
 
 
 

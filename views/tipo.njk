@@ -1,0 +1,16 @@
+{% extends 'base.njk' %}
+{% block home %}
+    href="/paciente/"
+{% endblock home %}
+{% block signup %}
+<li><a href="/paciente/Entrar" class="menu-buttons">Logar</a></li>
+{% endblock signup %}
+{% block conteudo %}
+    <div class="main-card">
+        <div></div>
+        <div>
+        <a class="button large" href="/paciente/TipoPaciente">Cadastrar Paciente</a>
+        <a class="button large" href="/funcionario/TipoFuncionario">Cadastrar Funcionário</a>
+        </div>
+    </div>
+{% endblock conteudo %}

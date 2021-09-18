@@ -7,12 +7,11 @@
 {% endblock signup %}
 {% block conteudo %}
     <div class="form">
-        <form action="" method="post">
+        <form action="/paciente/fazerLogin" method="post">
         <h2>Login</h2>
-        <label>E-mail<input type="email" minlength="12" maxlength="40" placeholder="Insira seu email" name="email"></label>
-        <label>senha<input type="password" minlength="6" maxlength="40" name="email" placeholder="Insira sua senha"></label>
+        <label>E-mail<input type="email" autofocus minlength="12" maxlength="40" placeholder="Insira seu email" name="email"></label>
+        <label>senha<input type="password" minlength="6" maxlength="40" name="senha" placeholder="Insira sua senha"></label>
         <br>
-        <a class="button large" value="Entrar">Entrar</a>
-        
+        <input type="submit" class="button large" value="Entrar">
     </div>
 {% endblock conteudo %}
