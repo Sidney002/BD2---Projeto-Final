@@ -109,7 +109,9 @@ main .main-card{
     min-height: 213px;
     font-size: 1.2em;
 }
-
+.tipo{
+    padding: 50px;
+}
 .main-card .dados{
     border: 1px solid rgb(18, 18, 165);
     border-radius: 8px;
@@ -118,7 +120,7 @@ main .main-card{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 50px;
+    margin-top: 102px;
 }
 .form{
     width: 80%;
