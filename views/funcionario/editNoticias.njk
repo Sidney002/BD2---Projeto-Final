@@ -1,0 +1,20 @@
+{% extends 'funcionario/newBase.njk' %}
+{% block home %}
+    href="/paciente/"
+{% endblock home %}
+{% block conteudo %}
+    <div class="main-card">
+
+        <div class=" form news">
+        <form action="/adicionaNoticia" method="post">
+        <label><span>Titulo</span><input required type="email" autofocus minlength="12" maxlength="40" placeholder="Insira o titulo da postagem" name="titulo"></label>
+        <textarea required name="conteudo" placeholder="Descreva o seu problema para agilizar o atendimento"></textarea>
+        <input type="submit" class="button large" value="Salvar">
+        <input type="submit" href="#" class="button large" value="apagar">
+        </form>
+            
+        </div>
+        <a class="button large" href="/paciente/">Voltar</a>
+
+    </div>
+{% endblock conteudo %}

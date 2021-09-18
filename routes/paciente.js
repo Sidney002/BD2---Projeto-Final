@@ -70,7 +70,11 @@ router.post('/fazerLogin', async(req,res)=>{
             console.log(req.session.login)
 
             console.log("login realizado com sucesso!");
-            res.redirect("Perfil")
+            if(req.session.login.tipo=='funcionario'){
+                res.redirect("/funcionario/FuncPage")
+            }else{
+                res.redirect("Perfil")
+            }
             
         }else{
             console.log('error','senha incorreta')

@@ -1,0 +1,40 @@
+{% extends 'funcionario/newBase.njk'%}
+
+{%block perfil%}
+{%endblock perfil%}
+
+{% block conteudo%}
+    <div class="main-card">
+        <div class="main-card-2">
+            <div class="dados">
+                <p>Nome: </p>
+                <p>Telefone: </p>
+                <p>Email: </p>
+                <p>Cargo: </p>
+                <h4>Endereço </h4>
+                <p>Rua: {{dados.rua}}</p>
+                <p>Bairro: {{dados.bairro}}</p>
+                <p>Cidade: {{dados.cidade}}</p>
+                <a href="#" type="submit" class="button" >Editar</a>
+            </div>
+            
+        </div>
+        
+        <section class="galery">
+
+        <div class="galery-card">
+            <a href="/funcionario/edit">
+                <span class="card-item">
+                <h4>{{item.titulo}}Titulo da Materia</h4>
+                <small>{{item.data}}14/02/2012</small>
+                </span>
+            </a>
+        </div>        
+    </section >
+
+        <div>
+            <a href="/funcionario/Agenda" type="submit" class="button large" >Ver Agenda</a>
+            <a href="/funcionario/FazerAgendamento" type="submit" class="button large" >Agendar Consulta</a>
+        </div>
+    </div>
+{% endblock conteudo%}
