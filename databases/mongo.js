@@ -25,8 +25,8 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             await Client.connect()
             .then(()=>{console.log("app conectado ao mongodb")})
             .catch((err)=>{console.log("não foi possivel conectar ao mongoDB: " +err)})
-            const database = Client.db('crudblog')
-            const user = database.collection('Postagens')
+            const database = Client.db('projeto')
+            const user = database.collection('Posts')
          
             //.fin() retorna um obj, o foreach retorna um array apenas com as informações que vamos usar
          
@@ -46,17 +46,17 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             .then(()=>{console.log("app conectado ao mongodb")})
             .catch((err)=>{console.log("não foi possivel conectar ao mongoDB: " +err)})
             //conectando a collection e database passados por parametros
-            const user = Client.db('crudblog').collection('Usuarios')
+            const user = Client.db('projeto').collection('posts')
          
          
             await user.updateOne({_id: "ObjectId("+filter+")"},{$set: {titulo: titulo}} , (req, res) => {
-                console.log("uma postagem foi editada")
+                console.log("Agendamento alterado")
             })
         }finally{
             await Client.close()
         }
     }
-    //a função de adicionar postagens 
+    //a função de adicionar agendamentos 
     async function addPost(obj){
      
         try{
@@ -66,8 +66,8 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             //conectando a collection e database passados por parametros
             const user = Client.db('projeto').collection('Posts')
             await user.insertOne(obj)
-            .then(console.log("mensagem postada com sucesso"))
-            .catch((err)=>{console.log("não foi possivel realizar a postagem: " +err)})
+            .then(console.log("Agendamento realizado com sucesso"))
+            .catch((err)=>{console.log("não foi possivel realizar o agendamento: " +err)})
         }finally{
             await Client.close()
         }
