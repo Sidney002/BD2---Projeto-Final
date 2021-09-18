@@ -1,4 +1,5 @@
 const express = require('express')
+const usuario= require('../databases/postgres')
 const router = express.Router()
 
 //gets
@@ -33,7 +34,7 @@ router.get('/TipoPaciente',(req,res)=>{
     res.render("cadastrar")
 })
 router.get('/Perfil',(req,res)=>{
-    res.render("logado/userPage")
+    res.render("logado/userPage", {dados: req.session.login})
 })
 router.get('/Agendamentos',(req,res)=>{
     res.render('logado/agenda')
@@ -56,17 +57,16 @@ router.post('/adicionarAgendamento',(req,res)=>{
     console.log(obj)
     res.redirect('Agendamentos')
 })
-router.post('/fazerLogin',(req,res)=>{
-    const usr = req.body.email
-    console.log(usr)
-    const usrSenha =  req.body.senha
-    console.log(usrSenha)
+router.post('/fazerLogin', async(req,res)=>{
+    const usr = {email:req.body.email}
+    const usrSenha =  {senha:req.body.senha}
 
-    if(JSON.stringify("caiosidney@gmail.com") == JSON.stringify(usr)){
 
-        if(JSON.stringify("123456") == JSON.stringify(usrSenha)){
+    if(JSON.stringify(await usuario.getUserEmail(req.body.email)) == JSON.stringify(usr)){
 
-            req.session.login = "teste.teste.teste"
+        if(JSON.stringify(await usuario.getUserPassword(req.body.email)) == JSON.stringify(usrSenha)){
+
+            req.session.login = await usuario.getUser(req.body.email)
             console.log(req.session.login)
 
             console.log("login realizado com sucesso!");
@@ -86,14 +86,14 @@ router.post('/fazerLogin',(req,res)=>{
 router.post('/cadastro',(req,res)=>{
     if(req.body.senha == req.body.confirmSenha){
         const obj = {
-            tipo: 'Paciente',
+            tipo: 'paciente',
             nome: req.body.nome,
             email: req.body.email,
             senha: req.body.senha,
             telefone: req.body.telefone,
-            SUS: req.body.SUS,
+            sus: req.body.SUS,
             cpf: req.body.cpf,
-            endereço: {
+            endereco: {
                 rua: req.body.rua,
                 bairro: req.body.bairro,
                 cidade: req.body.cidade
@@ -101,8 +101,8 @@ router.post('/cadastro',(req,res)=>{
             sexo: req.body.sexo,
             nascimento: req.body.data
         }
-
-        console.log(obj)
+        
+        usuario.setNewUser(obj);
         res.redirect('Perfil')
     }else{
         console.log("as senhas não batem")
