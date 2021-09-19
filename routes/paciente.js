@@ -60,21 +60,33 @@ router.post('/adicionarAgendamento',(req,res)=>{
 router.post('/fazerLogin', async(req,res)=>{
     const usr = {email:req.body.email}
     const usrSenha =  {senha:req.body.senha}
+    //const funcUser = await usuario.getUserFunc(req.session.login.email)
+    
 
 
-    if(JSON.stringify(await usuario.getUserEmail(req.body.email)) == JSON.stringify(usr)){
+    if(JSON.stringify(await usuario.getUserEmailPac(req.body.email)) == JSON.stringify(usr) || JSON.stringify(await usuario.getUserEmailFunc(req.body.email)) == JSON.stringify(usr)){
 
-        if(JSON.stringify(await usuario.getUserPassword(req.body.email)) == JSON.stringify(usrSenha)){
+        if(JSON.stringify(await usuario.getUserPasswordPac(req.body.email)) == JSON.stringify(usrSenha) || JSON.stringify(await usuario.getUserPasswordFunc(req.body.email)) == JSON.stringify(usrSenha)){
 
-            req.session.login = await usuario.getUser(req.body.email)
-            console.log(req.session.login)
-
-            console.log("login realizado com sucesso!");
-            if(req.session.login.tipo=='funcionario'){
-                res.redirect("/funcionario/FuncPage")
-            }else{
+            req.session.login = await usuario.getUserPac(req.body.email)
+            
+            if (await usuario.getUserPac(req.body.email)) {
+                req.session.login = await usuario.getUserPac(req.body.email)
+                console.log(req.session.login)
                 res.redirect("Perfil")
+                console.log("login realizado com sucesso!");
             }
+
+            else if (await usuario.getUserFunc(req.body.email)) {
+                req.session.login = await usuario.getUserFunc(req.body.email)
+                console.log(req.session.login)
+                res.redirect("/funcionario/FuncPage")
+                console.log("login realizado com sucesso!");
+                
+            } 
+
+            
+            
             
         }else{
             console.log('error','senha incorreta')

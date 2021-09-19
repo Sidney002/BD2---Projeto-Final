@@ -22,38 +22,65 @@
 
      } else {
 
-        const funcionario = "INSERT INTO funcionario (nome, cpf, datanasc, dataadmissao, cargo, salario) VALUES ($1, $2, $3, $4, $5, $6)"
-        client.query(funcionario,[obj.nome, obj.cpf, obj.senha, obj.email, obj.sus, obj.telefone, obj.sexo, obj.nascimento, obj.endereco.rua, obj.endereco.bairro, obj.endereco.cidade])
+        const funcionario = "INSERT INTO funcionario (nome, cpf, senha, email, telefone, rua, bairro, cidade, nascimento, admissao, funcao, salario) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)"
+        client.query(funcionario,[obj.nome, obj.cpf, obj.senha, obj.email, obj.telefone, obj.endereco.rua, obj.endereco.bairro, obj.endereco.cidade, obj.nascimento, obj.admissao, obj.funcao, obj.salario])
         console.log("Funcionario cadastrado com sucesso!")
      }
      
  }
- async function getUser(email) {
+ async function getUserPac(email) {
      const res = await client.query(`SELECT * FROM paciente WHERE email=$1`,[email])
   
      if(res.rows.length > 0) {
          return res.rows[0]
      }else return null
  }
+
+ async function getUserFunc(email) {
+    const res = await client.query(`SELECT * FROM funcionario WHERE email=$1`,[email])
  
- async function getUserEmail(email) {
+    if(res.rows.length > 0) {
+        return res.rows[0]
+    }else return null
+}
+ 
+ async function getUserEmailPac(email) {
      const res = await client.query(`SELECT email FROM paciente WHERE email=$1 LIMIT 1`,[email])
   
      if(res.rows.length > 0) {
          return res.rows[0]
      }else return null
  }
- async function getUserPassword(email) {
+
+ async function getUserEmailFunc(email) {
+    const res = await client.query(`SELECT email FROM funcionario WHERE email=$1 LIMIT 1`,[email])
+ 
+    if(res.rows.length > 0) {
+        return res.rows[0]
+    }else return null
+}
+
+ async function getUserPasswordPac(email) {
      const res =  await client.query(`SELECT senha FROM paciente WHERE email=$1 LIMIT 1`,[email])
      if(res.rows.length > 0) {
          return res.rows[0]
      }else return null
  }
+
+ async function getUserPasswordFunc(email) {
+    const res =  await client.query(`SELECT senha FROM funcionario  WHERE email=$1 LIMIT 1`,[email])
+    if(res.rows.length > 0) {
+        return res.rows[0]
+    }else return null
+}
  //exportar cliente
  module.exports = {
      client,
-     getUserEmail,
-     getUserPassword,
+     getUserEmailPac,
+     getUserEmailFunc,
+     getUserPasswordPac,
+     getUserPasswordFunc,
      setNewUser,
-     getUser
+     getUserPac,
+     getUserFunc
  }

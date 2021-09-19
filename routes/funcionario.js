@@ -1,4 +1,5 @@
 const { application, Router } = require('express')
+const usuario= require('../databases/postgres')
 const express = require('express')
 const router = express.Router()
 
@@ -7,8 +8,9 @@ const router = express.Router()
 router.get('/UBS',(req,res)=>{
     res.render('funcionario/adminUBS')
 })
-router.get('/FuncPage',(req,res)=>{
-    res.render('funcionario/funcionario')
+router.get('/FuncPage', async (req,res)=>{
+    res.render('funcionario/funcionario' , {dados: req.session.login})
+
 })
 router.get('/TipoFuncionario',(req,res)=>{
     res.render('funcionario/cadastrar')
@@ -29,24 +31,31 @@ router.get('/edit',(req,res)=>{
 
 //posts
 router.post('/cadastro',(req,res)=>{
-    const obj = {
-        tipo: 'Funcionario',
-        nome: req.body.nome,
-        email: req.body.email,
-        senha: req.body.senha,
-        telefone: req.body.telefone,
-        cpf: req.body.cpf,
-        endereço: {
-            rua: req.body.rua,
-            bairro: req.body.bairro,
-            cidade: req.body.cidade
-        },
-        nascimento: req.body.data,
-        função: req.body.função,
-        salario: req.body.salario,
-        dataAdmissao: req.body.dataAdmissao
+    if(req.body.senha == req.body.confirmSenha){
+        const obj = {
+            tipo: 'funcionario',
+            nome: req.body.nome,
+            email: req.body.email,
+            senha: req.body.senha,
+            telefone: req.body.telefone,
+            cpf: req.body.cpf,
+            endereco: {
+                rua: req.body.rua,
+                bairro: req.body.bairro,
+                cidade: req.body.cidade
+            },
+            nascimento: req.body.data,
+            funcao: req.body.função,
+            salario: req.body.salario,
+            admissao: req.body.admissao
+        }
+        usuario.setNewUser(obj);
+
+        res.redirect('FuncPage')
+    }else{
+        console.log("as senhas não batem")
     }
-    console.log(obj)
+    
 })
 
 
