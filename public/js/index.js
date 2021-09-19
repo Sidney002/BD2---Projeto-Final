@@ -1,4 +1,4 @@
-  
+/*   
 let map;
 let marker;
 
@@ -36,7 +36,7 @@ function save() {
     lng: marker.getPosition().lng(),
   };
 
-  fetch("http://localhost:6006/funcionario/pontos", {
+  fetch("http://localhost:9006/funcionario/pontos", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -51,7 +51,7 @@ function save() {
 }
 
 const destiny = () => {
-  fetch("http://localhost:6006/destiny")
+  fetch("http://localhost:8006/destiny")
     .then((res) => res.json())
     .then((data) => {
       const size = data.length;
@@ -83,4 +83,4 @@ const destiny = () => {
         map.setCenter(marker.getPosition());
       });
     });
-};
+}; */

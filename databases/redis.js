@@ -8,8 +8,8 @@
 
 
  //a função set recebe como parametro o nome ou id do usuario e  conteudo do agendamento
- async function set(key, msg){
-     await Redis_client.set(key, JSON.stringify(msg), "EX", 7200);
+ async function set(key, descricao){
+     await Redis_client.set(key, JSON.stringify(descricao), "EX", 7200);
      console.log("Agendamento concluido com sucesso")
  }
 

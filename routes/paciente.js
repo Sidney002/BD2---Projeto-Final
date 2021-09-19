@@ -1,7 +1,9 @@
 const express = require('express')
 const usuario= require('../databases/postgres')
 const postagens = require('../databases/mongo')
+const { set } = require('../databases/redis')
 const router = express.Router()
+const agenda = require('../databases/redis')
 
 //gets
 router.get('/', async(req,res)=>{
@@ -55,15 +57,18 @@ router.get('/sair',(req,res)=>{
 
 //posts
 router.post('/adicionarAgendamento',(req,res)=>{
-    const obj = {
-        nome: req.session.login.nome,
+    /* const obj = {
         tipo: req.body.tipo,
         titulo: req.body.motivo,
         descrição: req.body.descrição
-    }
-    console.log(obj)
+    } */
+    const key = req.session.login.nome;
+    agenda.set(key, req.body.descrição)
+    
     res.redirect('Agendamentos')
 })
+
+
 router.post('/fazerLogin', async(req,res)=>{
     const usr = {email:req.body.email}
     const usrSenha =  {senha:req.body.senha}
