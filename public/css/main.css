@@ -161,6 +161,13 @@ main .main-card{
     width: 50px;
 }
 
+.agenda-class{
+    border: 1px solid darkblue;
+    min-height: 50px;
+    max-height: 200px;
+
+}
+
 
 
 /*footer*/

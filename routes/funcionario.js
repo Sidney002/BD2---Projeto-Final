@@ -3,6 +3,7 @@ const usuario= require('../databases/postgres')
 const postagens = require('../databases/mongo')
 const express = require('express')
 const router = express.Router()
+const agenda = require('../databases/redis')
 
 
 
@@ -18,12 +19,28 @@ router.get('/FuncPage', async (req,res)=>{
 router.get('/TipoFuncionario',(req,res)=>{
     res.render('funcionario/cadastrar')
 })
+
+
 router.get('/sair',(req,res)=>{
     req.session.login = null
     res.redirect('/paciente/')
 })
-router.get('/Agenda',(req,res)=>{
-    res.render("funcionario/VerAgenda")
+router.get('/Agenda', async (req,res)=>{
+   
+    const arr = []
+        await agenda.Redis_client.keys("*", function(err,reply){
+        if(reply!= null){
+            arr.push(reply)
+            res.render("funcionario/verAgenda", {teste: reply})
+        }
+        
+        else{ 
+            console.log("Nenhum agendamento cadastrado func")
+            res.render("funcionario/verAgenda")        }
+           
+      
+    })
+    
 })
 router.get('/AgendarPac',(req,res)=>{
     res.render('funcionario/adminAgenda')
@@ -74,22 +91,37 @@ router.post("/postar",async(req,res)=>{
     postagens.addPost(obj)
     res.redirect('FuncPage')
 })
+
 router.get('/delete/:titulo',async (req,res)=>{
     const filtro = {titulo: req.params.titulo}
     await mongo.dellPost(filtro)
     console.log(filtro)
     res.redirect('FuncPage')
 })
+
 router.get('/Paciente/:nome',(req,res)=>{
-    res.render('funcionario/VerPaciente',{pac:pac})
+    res.render('funcionario/verPaciente',{pac:pac})
 })
+
+router.post('/adicionarAgendamento',(req,res)=>{
+     const obj = {
+        tipo: req.body.tipo,
+        titulo: req.body.motivo,
+        descrição: req.body.descrição
+    } 
+    const key = req.body.nome;
+    agenda.set(key, req.body.descrição)
+    
+    res.redirect('Agenda')
+})
+
 
 
 //map
 
-const UBS = require("../controler");
+/* const UBS = require("../controler");
     router.post("/pontos", UBS.createdDestiny);
-    router.get("/destiny", UBS.getDestiny);
+    router.get("/destiny", UBS.getDestiny); */
 
 
 module.exports = router

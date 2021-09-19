@@ -14,18 +14,41 @@
  }
 
 // //funçao que faz a busca no redis pelo agendamento da pessoa que o nome ou id foi passado por parametro
- function get(key){
-     let arr = []
-         Redis_client.get(key,function(err,reply){
-         if(reply!= null){
-             arr.push(reply)
-             console.log(arr)
+async function get(key){
+    let arr =[ ] 
+    await Redis_client.get(key,function(err,reply){
+            
+        arr.push(reply)
+    if(reply!= null){
+            console.log(reply)
+            return reply
          }
-         else{ console.log("Nenhum agendamento cadastrado")}
+    else{ console.log("Nenhum agendamento cadastrado")}
              return arr
      })
  }
+
+async function getAll(){
+
+        await Redis_client.keys("*", function(err,reply){
+        if(reply!= null){
+            
+            console.log(reply)
+            return reply
+        }
+        
+        else{ 
+            console.log("Nenhum agendamento cadastrado func")
+            return null;
+        }
+           
+      
+    })
+}
+
  module.exports = {
      set,
-     get
+     get,
+     getAll,
+     Redis_client
  }

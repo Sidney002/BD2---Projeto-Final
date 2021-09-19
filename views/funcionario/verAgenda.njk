@@ -4,13 +4,15 @@
 <div class="main-card">
 
     <input href="/funcionario/Paciente/{{pac.nome}}" type="text" minlength="2" placeholder="Buscar por paciente" name="nome">
-
-    <h2>Agendamentos</h2>
+    <h2>Pacientes agendados</h2>
+    <div class= "agenda-class">
+        {%for item in teste%}
+            <p>Paciente: {{item}}</p>
+         
+        {%endfor%}
+    </div>
     
-    <p>Titulo:</p>
-    <p>Paciente:</p>
-    <p>Descrição</p>
-    <p>Data:</p>
+    
 
     <a class="button large" href="/funcionario/AgendarPac">Agendar Consulta</a>
 
