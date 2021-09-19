@@ -6,78 +6,14 @@
     <section class="galery">
 
         <div class="galery-card">
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
+            {%for item in posts%}
+                <a href="/paciente/Noticias/{{item.titulo}}">
+                    <span class="card-item">
+                    <h4>{{item.titulo}}</h4>
+                    <small>{{item.data}}</small>
                 </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
-            <a href="#">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
+                </a>
+            {%endfor%}
         </div>        
     </section >
 

@@ -1,7 +1,9 @@
 const { application, Router } = require('express')
 const usuario= require('../databases/postgres')
+const postagens = require('../databases/mongo')
 const express = require('express')
 const router = express.Router()
+
 
 
 //gets
@@ -9,7 +11,8 @@ router.get('/UBS',(req,res)=>{
     res.render('funcionario/adminUBS')
 })
 router.get('/FuncPage', async (req,res)=>{
-    res.render('funcionario/funcionario' , {dados: req.session.login})
+    const posts = await postagens.getPost()
+    res.render('funcionario/funcionario' , {dados: req.session.login, posts: posts})
 
 })
 router.get('/TipoFuncionario',(req,res)=>{
@@ -25,8 +28,9 @@ router.get('/Agenda',(req,res)=>{
 router.get('/news',(req,res)=>{
     res.render("funcionario/adminNoticias")
 })
-router.get('/edit',(req,res)=>{
-    res.render("funcionario/editNoticias")
+router.get('/edit/:titulo',async (req,res)=>{
+    posts = await postagens.getPostFilter(req.params.titulo)
+    res.render("funcionario/editNoticias",{posts: posts})
 })
 
 //posts
@@ -56,6 +60,22 @@ router.post('/cadastro',(req,res)=>{
         console.log("as senhas não batem")
     }
     
+})
+router.post("/postar",async(req,res)=>{
+    const obj = {
+        autor: req.session.login.nome,
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo,
+        data: postagens.setData()
+    }
+    postagens.addPost(obj)
+    res.redirect('FuncPage')
+})
+app.get('/delete/:titulo',async (req,res)=>{
+    const filtro = {titulo: req.params.titulo}
+    await mongo.dellPost(filtro)
+    console.log(filtro)
+    res.redirect('/funcionario/FuncPage')
 })
 
 

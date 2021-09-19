@@ -31,7 +31,7 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             //.fin() retorna um obj, o foreach retorna um array apenas com as informações que vamos usar
          
             let arr = []
-            await user.find({autor: filter}).sort({data: "desc"}).forEach(  (item)=>{ arr.push(item) })
+            await user.find({titulo: filter}).sort({data: "desc"}).forEach(  (item)=>{ arr.push(item) })
          
             return arr
          
@@ -49,7 +49,7 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             const user = Client.db('projeto').collection('posts')
          
          
-            await user.updateOne({_id: "ObjectId("+filter+")"},{$set: {titulo: titulo}} , (req, res) => {
+            await user.updateOne({titulo: filter},{$set: {titulo: titulo,conteudo: conteudo}} , (req, res) => {
                 console.log("Agendamento alterado")
             })
         }finally{
@@ -66,8 +66,8 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             //conectando a collection e database passados por parametros
             const user = Client.db('projeto').collection('Posts')
             await user.insertOne(obj)
-            .then(console.log("Agendamento realizado com sucesso"))
-            .catch((err)=>{console.log("não foi possivel realizar o agendamento: " +err)})
+            .then(console.log("Postagem realizada com sucesso"))
+            .catch((err)=>{console.log("não foi possivel realizar a postagem: " +err)})
         }finally{
             await Client.close()
         }

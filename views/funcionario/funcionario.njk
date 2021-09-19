@@ -23,12 +23,14 @@
         <section class="galery">
 
         <div class="galery-card">
-            <a href="/funcionario/edit">
-                <span class="card-item">
-                <h4>{{item.titulo}}Titulo da Materia</h4>
-                <small>{{item.data}}14/02/2012</small>
-                </span>
-            </a>
+            {% for item in posts %}
+                <a href="/funcionario/edit/{{item.titulo}}">
+                    <span class="card-item">
+                    <h4>{{item.titulo}}Titulo da Materia</h4>
+                    <small>{{item.data}}14/02/2012</small>
+                    </span>
+                 </a>
+            {% endfor %}
         </div>        
     </section >
 

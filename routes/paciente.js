@@ -1,19 +1,23 @@
 const express = require('express')
 const usuario= require('../databases/postgres')
+const postagens = require('../databases/mongo')
 const router = express.Router()
 
 //gets
-router.get('/', (req,res)=>{
+router.get('/', async(req,res)=>{
+
+    const posts = await postagens.getPost()
     if(!req.session.login){
-        res.render('index')
+        res.render('index',{posts:posts})
     }
     else{
-        res.render('logado/indexLogado')
+        res.render('logado/indexLogado',{pots:pots})
     }
 })
 
-router.get('/Noticias',(req,res)=>{
-    res.render('noticias')
+router.get('/Noticias/:titulo',(req,res)=>{
+    const posts = postagens.getPostFilter(req.params.titulo)
+    res.render('noticias',{posts:posts})
 })
 
 router.get('/Entrar', (req,res)=>{
