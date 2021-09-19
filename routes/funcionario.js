@@ -16,8 +16,10 @@ router.get('/FuncPage', async (req,res)=>{
     res.render('funcionario/funcionario' , {dados: req.session.login, posts: posts})
 
 })
-router.get('/TipoFuncionario',(req,res)=>{
-    res.render('funcionario/cadastrar')
+router.get('/TipoFuncionario',async (req,res)=>{
+    const ubs = await usuario.getUbs()
+    console.log(ubs)
+    res.render('funcionario/cadastrar', {ubs: ubs})
 })
 
 
@@ -81,6 +83,7 @@ router.post('/cadastro',(req,res)=>{
     }
     
 })
+
 router.post("/postar",async(req,res)=>{
     const obj = {
         autor: req.session.login.nome,

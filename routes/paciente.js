@@ -135,6 +135,7 @@ router.post('/cadastro',(req,res)=>{
     }
 
 })
+
 //deslogar user
 
 

@@ -8,6 +8,7 @@
      user: process.env.PG_USER,
      password: process.env.PG_PASSWORD
  });
+
  //conectar cliente
  client.connect()
      .then(()=>console.log("Cliente Conectado"))
@@ -28,6 +29,7 @@
      }
      
  }
+
  async function getUserPac(email) {
      const res = await client.query(`SELECT * FROM paciente WHERE email=$1`,[email])
   
@@ -73,6 +75,14 @@
         return res.rows[0]
     }else return null
 }
+
+async function getUbs() {
+
+    const res =  await client.query(`SELECT nome FROM ubs`)
+    if(res.rows.length > 0) {
+        return res.rows
+    }else return null
+}
  //exportar cliente
  module.exports = {
      client,
@@ -82,5 +92,6 @@
      getUserPasswordFunc,
      setNewUser,
      getUserPac,
-     getUserFunc
+     getUserFunc,
+     getUbs
  }
