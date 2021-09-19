@@ -6,11 +6,14 @@
     <div class="main-card">
 
         <div class="news">
-            <h2>{{posts.titulo}}</h2>
-            <p>{{posts.conteudo}}</p>
-            <small>{{posts:data}}</small>
-            <br>
-            <small>{{posts.autor}}</small>
+           
+             {%for item in posts%}
+                <h2>{{item.titulo}}</h2>
+                <p>{{item.conteudo}}</p>
+                <small>{{item.data}}</small>
+                <br>
+                <small>{{item.autor}}</small>
+            {%endfor%}
         </div>
 
         <a class="button large" href="/paciente/">Voltar</a>

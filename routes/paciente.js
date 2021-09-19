@@ -9,15 +9,17 @@ router.get('/', async(req,res)=>{
     const posts = await postagens.getPost()
     if(!req.session.login){
         res.render('index',{posts:posts})
+        
     }
     else{
-        res.render('logado/indexLogado',{pots:pots})
+        res.render('logado/indexLogado',{posts:posts})
     }
 })
 
-router.get('/Noticias/:titulo',(req,res)=>{
-    const posts = postagens.getPostFilter(req.params.titulo)
+router.get ('/Noticias/:titulo', async (req,res)=>{
+    const posts = await postagens.getPostFilter(req.params.titulo)
     res.render('noticias',{posts:posts})
+    console.log(posts)
 })
 
 router.get('/Entrar', (req,res)=>{
@@ -76,14 +78,12 @@ router.post('/fazerLogin', async(req,res)=>{
             
             if (await usuario.getUserPac(req.body.email)) {
                 req.session.login = await usuario.getUserPac(req.body.email)
-                console.log(req.session.login)
                 res.redirect("Perfil")
                 console.log("login realizado com sucesso!");
             }
 
             else if (await usuario.getUserFunc(req.body.email)) {
                 req.session.login = await usuario.getUserFunc(req.body.email)
-                console.log(req.session.login)
                 res.redirect("/funcionario/FuncPage")
                 console.log("login realizado com sucesso!");
                 

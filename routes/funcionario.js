@@ -71,11 +71,11 @@ router.post("/postar",async(req,res)=>{
     postagens.addPost(obj)
     res.redirect('FuncPage')
 })
-app.get('/delete/:titulo',async (req,res)=>{
+router.get('/delete/:titulo',async (req,res)=>{
     const filtro = {titulo: req.params.titulo}
     await mongo.dellPost(filtro)
     console.log(filtro)
-    res.redirect('/funcionario/FuncPage')
+    res.redirect('FuncPage')
 })
 
 

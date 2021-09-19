@@ -2,9 +2,9 @@
 
 {% block conteudo%}
     <div class="form">
-        <form action="/adicionaNoticia" method="post">
+        <form action="/funcionario/postar" method="post">
         <h2>Postar Noticias</h2>
-        <label><span>Titulo</span><input required type="email" autofocus minlength="12" maxlength="40" placeholder="Insira o titulo da postagem" name="titulo"></label>
+        <label><span>Titulo</span><input required type="text" autofocus minlength="4" maxlength="40" placeholder="Insira o titulo da postagem" name="titulo"></label>
         <textarea required name="conteudo" placeholder="Descreva o seu problema para agilizar o atendimento"></textarea>
         <input type="submit" class="button large" value="Postar">
         </form>

@@ -8,8 +8,8 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             await Client.connect()
             .then(()=>{console.log("app conectado ao mongodb")})
             .catch((err)=>{console.log("não foi possivel conectar ao mongoDB: " +err)})
-            const database = Client.db('crudblog')
-            const user = database.collection('Postagens')
+            const database = Client.db('projeto')
+            const user = database.collection('Posts')
          
             //.fin() retorna um obj, o foreach retorna um array apenas com as informações que vamos usar
          
@@ -46,7 +46,7 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             .then(()=>{console.log("app conectado ao mongodb")})
             .catch((err)=>{console.log("não foi possivel conectar ao mongoDB: " +err)})
             //conectando a collection e database passados por parametros
-            const user = Client.db('projeto').collection('posts')
+            const user = Client.db('projeto').collection('Posts')
          
          
             await user.updateOne({titulo: filter},{$set: {titulo: titulo,conteudo: conteudo}} , (req, res) => {
@@ -69,7 +69,8 @@ const Client = new MongoClient('mongodb://172.19.0.2/27017}',
             .then(console.log("Postagem realizada com sucesso"))
             .catch((err)=>{console.log("não foi possivel realizar a postagem: " +err)})
         }finally{
-            await Client.close()
+            //await Client.close()
+            console.log("hello word");
         }
     }
     //mesma coisa, função de deletar mensagem
