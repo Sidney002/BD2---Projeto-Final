@@ -10,11 +10,13 @@ const funcionario = require('./routes/funcionario')
 const user = require('./databases/postgres')
 const post = require('./databases/mongo')
 const agenda = require('./databases/redis')
+const cors = require("cors");
 
 //Configuração   
     //public
     app.use(express.static(path.join(__dirname,"public")))
     app.use(express.json())
+    app.use(cors());
     app.use(express.urlencoded({extended: true}))
     app.use(session({
         secret: "456123843",
@@ -43,6 +45,9 @@ const agenda = require('./databases/redis')
     //Rotas
     app.use('/paciente', paciente)
     app.use('/funcionario', funcionario)
+
+    //map config
+    const UBS = require("./controler.js");
 
 const port = 6006;
 app.listen(port,()=>{

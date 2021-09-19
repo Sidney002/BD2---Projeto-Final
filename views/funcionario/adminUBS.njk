@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/main.css">    
     <link rel="stylesheet" href="/css/galery.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Glory:wght@200;300&display=swap">
+    <script src="/js/index.js"></script>
     <title>Mais Saude</title>
 </head>
 <body>
@@ -13,7 +16,34 @@
             <div class="logo-container"><a {% block home %}{% endblock home%} class="menu-logo">Mais<span>Saúde</span></a></div>
             <ul>
                 <li><a href="/funcionario/FuncPage" class="menu-buttons">Voltar</a></li>
+                <div id="container">
 
+        <div id="form">
+            <form action="/UBS" method="post">
+            <div>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" />
+
+                <label for="checkin">Check-in:</label>
+                <input type="date" id="checkin" />
+
+                <label for="checkout">Check-out:</label>
+                <input type="date" id="checkout" />
+            </div>
+
+            <div id="button">
+                <button id="btn-save" type="button" onclick="save()">Salvar</button>
+
+                <button id="btn-dest" type="button" onclick="destiny()">
+                Visualize seu Destino
+                </button>
+            </div>
+            </form>
+        </div>
+
+      <div id="map"></div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=&v=weekly" async></script>
                 
             </ul>
         </nav></header>
