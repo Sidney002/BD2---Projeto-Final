@@ -1,1 +1,19 @@
 {% extends 'funcionario/newBase.njk'%}
+
+{%block conteudo%}
+<div class="form">
+    <form action="/paciente/adicionarAgendamento" method="post">
+        <h2>Agendar consulta</h2>
+        <p>Tipo de consulta</p>
+        <select name="tipo">
+            <option>Clinico Geral</option>
+            <option>Dentista</option>
+        </select>
+        <br>
+        <label><span>Nome do Paciente:</span><input required type="text" autofocus minlength="2" maxlength="40" placeholder="Nome do Paciente" name="nome"></label>
+        <label><span>Motivo:</span><input required type="text" autofocus minlength="2" maxlength="40" placeholder="Motivo da consulta" name="motivo"></label>
+        <textarea required name="descrição" placeholder="Descreva o seu problema para agilizar o atendimento"></textarea>
+        <input type="submit" href="/paciente/adicionarAgendamento" class="button large" value="Agendar">
+    </form>
+</div>
+{%endblock conteudo%}

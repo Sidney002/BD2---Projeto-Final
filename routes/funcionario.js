@@ -23,7 +23,10 @@ router.get('/sair',(req,res)=>{
     res.redirect('/paciente/')
 })
 router.get('/Agenda',(req,res)=>{
-    res.render("funcionario/adminAgenda")
+    res.render("funcionario/VerAgenda")
+})
+router.get('/AgendarPac',(req,res)=>{
+    res.render('funcionario/adminAgenda')
 })
 router.get('/news',(req,res)=>{
     res.render("funcionario/adminNoticias")
@@ -76,6 +79,9 @@ router.get('/delete/:titulo',async (req,res)=>{
     await mongo.dellPost(filtro)
     console.log(filtro)
     res.redirect('FuncPage')
+})
+router.get('/Paciente/:nome',(req,res)=>{
+    res.render('funcionario/VerPaciente',{pac:pac})
 })
 
 

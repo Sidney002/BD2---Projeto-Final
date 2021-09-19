@@ -1,0 +1,16 @@
+{% extends 'funcionario/newBase.njk'%}
+
+{%block conteudo%}
+<div class="main-card">
+
+    <h2>Agendamentos</h2>
+    
+    <p>Titulo:{{pac.titulo}}</p>
+    <p>Paciente:{{pac.nome}}</p>
+    <p>Descrição:{{pac.descricao}}</p>
+    <p>Data:</p>
+
+    <a class="button large" href="/funcionario/Agenda">Voltar</a>
+
+</div>
+{%endblock conteudo%}
