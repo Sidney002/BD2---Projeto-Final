@@ -47,7 +47,7 @@ const cors = require("cors");
     app.use('/funcionario', funcionario)
 
     //map config
-    const UBS = require("./controler.js");
+    
 
 const port = 6006;
 app.listen(port,()=>{

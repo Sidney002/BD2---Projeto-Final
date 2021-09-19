@@ -79,4 +79,11 @@ router.get('/delete/:titulo',async (req,res)=>{
 })
 
 
+//map
+
+const UBS = require("../controler");
+    router.post("/pontos", UBS.createdDestiny);
+    router.get("/destiny", UBS.getDestiny);
+
+
 module.exports = router

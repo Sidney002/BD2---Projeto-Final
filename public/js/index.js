@@ -2,12 +2,12 @@
 let map;
 let marker;
 
-let center = { lat: -9.826044705294152, lng: -56.56730846033254 };
+let center = { lat: -6.763457123548206, lng: -38.23877402576849};
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: center,
-    zoom: 4,
+    zoom: 14,
   });
 
   marker = new google.maps.Marker({
@@ -32,13 +32,11 @@ function addMarker(evt) {
 function save() {
   const obj = {
     name: document.getElementById("name").value,
-    checkin: document.getElementById("checkin").value,
-    checkout: document.getElementById("checkout").value,
     lat: marker.getPosition().lat(),
     lng: marker.getPosition().lng(),
   };
 
-  fetch("http://localhost:3333/pontos", {
+  fetch("http://localhost:6006/funcionario/pontos", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -53,7 +51,7 @@ function save() {
 }
 
 const destiny = () => {
-  fetch("http://localhost:3333/destiny")
+  fetch("http://localhost:6006/destiny")
     .then((res) => res.json())
     .then((data) => {
       const size = data.length;

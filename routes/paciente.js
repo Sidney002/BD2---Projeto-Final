@@ -56,6 +56,7 @@ router.get('/sair',(req,res)=>{
 //posts
 router.post('/adicionarAgendamento',(req,res)=>{
     const obj = {
+        nome: req.session.login.nome,
         tipo: req.body.tipo,
         titulo: req.body.motivo,
         descrição: req.body.descrição
