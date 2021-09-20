@@ -1,6 +1,4 @@
-html,
-body {
-  height: 100%;
+html,body {
   margin: 0;
   padding: 0;
   font-family: 'Glory', sans-serif;
@@ -8,16 +6,10 @@ body {
 }
 
 #map {
-  width: 50%;
+  width: 49%;
   height: 100%;
   display: flex;
   justify-content: center;
-}
-
-#container {
-  height: 92%;
-  width: 100%;
-  display: flex;
 }
 
 #form {
@@ -34,38 +26,7 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
-#form div label {
-  width: 69%;
-  padding-bottom: 4px;
-  color:#000000;
-}
-
 #form div input {
   width: 67%;
-  border: #146775 1px solid;
-  border-radius: 5px;
-  margin-bottom: 19px;
-  padding: 6px;
-  outline-color: #026d80;
-}
-
-button{
-  display: inline-block;
-  margin: 10px auto;
-  border-radius: 5px;
-  width: 25%;
-  padding: 7px;
-}
-
-#btn-save{
-  margin-bottom: 10px;
-  border: none;
-  background-color: #003261;
-  color: #ffffff;
-}
-
-#btn-dest{
-  border: 1px solid #00103a;
-  color: #003261;
+  text-align: center;
 }
