@@ -1,12 +1,12 @@
  const poll = require("./databases/postgres");
 
-const createdDestiny = (request, response) => {
+const SalvarUBS = (request, response) => {
   const { name, lat, lng } = request.body;
-console.log("Sgow")
+console.log("Estou Salvando Uma UBS")
   const query = `INSERT INTO ubs (nome, geometria) 
         VALUES ('${name}', ST_GeomFromText('POINT(${lat} ${lng})'))`;
 
-  poll.query(query, (error, results) => {
+  poll.client.query(query, (error, results) => {
     if (error) {
       response.status(400).send(error);
       console.log(error);
@@ -16,10 +16,9 @@ console.log("Sgow")
   });
 };
 
-const getDestiny = (request, response) => {
+const BuscarUBS = (request, response) => {
   const query ='SELECT ST_x(geometria), ST_y(geometria) FROM ubs';
-
-  poll.query(query, (err, results) => {
+  poll.client.query(query, (err, results) => {
     if (err) {
       response.status(400).send(err);
     } else {
@@ -29,6 +28,6 @@ const getDestiny = (request, response) => {
 };
 
 module.exports = {
-  createdDestiny,
-  getDestiny,
+  SalvarUBS,
+  BuscarUBS
 }; 

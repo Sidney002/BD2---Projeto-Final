@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/buttons.css">
-    <link rel="stylesheet" href="/css/main.css">    
-    <link rel="stylesheet" href="/css/galery.css">
+    <link rel="stylesheet" href="/css/style.css" />  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Glory:wght@200;300&display=swap">
+    <script src="/js/index.js"></script>
     <title>Mais Saude</title>
 </head>
 <body>
-    <header class="menu-horizontal">
-            <div class="logo-container"><a href="/paciente/" class="menu-logo">Mais<span>Saúde</span></a></div>
-            <ul>
-                <li><a href="/paciente/" class="menu-buttons">Voltar</a></li>
+    <div id="form">
+            <form action="/UBS" method="post">
+                <div>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" placeholder="Insira o nome da UBS" >
 
-                
-            </ul>
-        </nav></header>
+
+                    <button id="btn-dest" type="button" onclick="destiny()">Visualize seu Destino</button>
+        
+                </div>
+            </form>
+      <div id="map"></div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=&v=weekly" async></script>
+</body>   

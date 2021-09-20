@@ -1,4 +1,3 @@
-const { application, Router } = require('express')
 const usuario= require('../databases/postgres')
 const postagens = require('../databases/mongo')
 const express = require('express')
@@ -122,10 +121,9 @@ router.post('/adicionarAgendamento',(req,res)=>{
 
 
 //map
-
-/* const UBS = require("../controler");
-    router.post("/pontos", UBS.createdDestiny);
-    router.get("/destiny", UBS.getDestiny); */
+ const UBS = require("../controler");
+    router.post("/pontos", UBS.SalvarUBS);
+    router.get("/destiny", UBS.BuscarUBS); 
 
 
 module.exports = router
