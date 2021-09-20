@@ -11,14 +11,12 @@ router.get('/UBS',(req,res)=>{
     res.render('funcionario/adminUBS')
 })
 router.get('/FuncPage', async (req,res)=>{
-    const posts = await postagens.getPost()
-    res.render('funcionario/funcionario' , {dados: req.session.login, posts: posts})
+    console.log(req.session.login)
+    res.render('funcionario/funcionario' , {dados: req.session.login})
 
 })
 router.get('/TipoFuncionario',async (req,res)=>{
-    const ubs = await usuario.getUbs()
-    console.log(ubs)
-    res.render('funcionario/cadastrar', {ubs: ubs})
+    res.render('funcionario/cadastrar')
 })
 
 
@@ -55,7 +53,7 @@ router.get('/edit/:titulo',async (req,res)=>{
 })
 
 //posts
-router.post('/cadastro',(req,res)=>{
+router.post('/cadastro', async (req,res)=>{
     if(req.body.senha == req.body.confirmSenha){
         const obj = {
             tipo: 'funcionario',
@@ -75,7 +73,7 @@ router.post('/cadastro',(req,res)=>{
             admissao: req.body.admissao
         }
         usuario.setNewUser(obj);
-
+        req.session.login = await usuario.getUserFunc(req.body.email)
         res.redirect('FuncPage')
     }else{
         console.log("as senhas não batem")

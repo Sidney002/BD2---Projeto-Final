@@ -1,7 +1,7 @@
 const express = require('express')
 const usuario= require('../databases/postgres')
 const postagens = require('../databases/mongo')
-const { set } = require('../databases/redis')
+const set  = require('../databases/redis')
 const router = express.Router()
 const agenda = require('../databases/redis')
 
@@ -21,7 +21,6 @@ router.get('/', async(req,res)=>{
 router.get ('/Noticias/:titulo', async (req,res)=>{
     const posts = await postagens.getPostFilter(req.params.titulo)
     res.render('noticias',{posts:posts})
-    console.log(posts)
 })
 
 router.get('/Entrar', (req,res)=>{
@@ -44,8 +43,10 @@ router.get('/TipoPaciente',(req,res)=>{
 router.get('/Perfil',(req,res)=>{
     res.render("logado/userPage", {dados: req.session.login})
 })
-router.get('/Agendamentos',(req,res)=>{
-    res.render('logado/agenda')
+router.get('/Agendamentos', async(req,res)=>{
+    const agen = await agenda.get(req.session.login.nome);
+    console.log(agen)
+    res.render('logado/agenda', {agen : agen})
 })
 router.get('/Agendar',(req,res)=>{
     res.render('logado/novoAgendamento')
@@ -57,13 +58,13 @@ router.get('/sair',(req,res)=>{
 
 //posts
 router.post('/adicionarAgendamento',(req,res)=>{
-    /* const obj = {
+        const obj = {
         tipo: req.body.tipo,
         titulo: req.body.motivo,
-        descrição: req.body.descrição
-    } */
+        descricao: req.body.descricao
+    } 
     const key = req.session.login.nome;
-    agenda.set(key, req.body.descrição)
+    agenda.set(key, obj)
     
     res.redirect('Agendamentos')
 })
@@ -109,7 +110,7 @@ router.post('/fazerLogin', async(req,res)=>{
     }
 })
 
-router.post('/cadastro',(req,res)=>{
+router.post('/cadastro', async (req,res)=>{
     if(req.body.senha == req.body.confirmSenha){
         const obj = {
             tipo: 'paciente',
@@ -129,6 +130,7 @@ router.post('/cadastro',(req,res)=>{
         }
         
         usuario.setNewUser(obj);
+        req.session.login = await usuario.getUserPac(req.body.email)
         res.redirect('Perfil')
     }else{
         console.log("as senhas não batem")
