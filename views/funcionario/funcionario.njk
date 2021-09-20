@@ -19,20 +19,6 @@
             </div>
             
         </div>
-        
-        <section class="galery">
-
-        <div class="galery-card">
-            {% for item in posts %}
-                <a href="/funcionario/edit/{{item.titulo}}">
-                    <span class="card-item">
-                    <h4>{{item.titulo}}Titulo da Materia</h4>
-                    <small>{{item.data}}14/02/2012</small>
-                    </span>
-                 </a>
-            {% endfor %}
-        </div>        
-    </section >
 
         <div>
             <a href="/funcionario/Agenda" type="submit" class="button large" >Ver Agenda</a>

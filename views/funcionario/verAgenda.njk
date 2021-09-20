@@ -3,14 +3,46 @@
 {%block conteudo%}
 <div class="main-card">
 
-    <input href="/funcionario/Paciente/{{pac.nome}}" type="text" minlength="2" placeholder="Buscar por paciente" name="nome">
-    <h2>Pacientes agendados</h2>
-    <div class= "agenda-class">
-        {%for item in teste%}
-            <p>Paciente: {{item}}</p>
-         
-        {%endfor%}
-    </div>
+    <section class="galery">
+        <h4>UBS</h4>
+        <div class="galery-card agenda">
+            <a href="/funcionario/Agenda/pabrlo">
+                <span class="card-item agt">
+                <small class="fixa">{{item.data}}Fixa:</small>
+                <h4>{{item.titulo}}Paciente</h4>
+                <small>{{item.data}}UBS</small>
+                </span>
+            </a>
+            <a href="/funcionario/Agenda/pabrlo">
+                <span class="card-item agt">
+                <small class="fixa">{{item.data}}Fixa:</small>
+                <h4>{{item.titulo}}Paciente</h4>
+                <small>{{item.data}}UBS</small>
+                </span>
+            </a>
+            <a href="/funcionario/Agenda/pabrlo">
+                <span class="card-item agt">
+                <small class="fixa">{{item.data}}Fixa:</small>
+                <h4>{{item.titulo}}Paciente</h4>
+                <small>{{item.data}}UBS</small>
+                </span>
+            </a>
+            <a href="/funcionario/Agenda/pabrlo">
+                <span class="card-item agt">
+                <small class="fixa">{{item.data}}Fixa:</small>
+                <h4>{{item.titulo}}Paciente</h4>
+                <small>{{item.data}}UBS</small>
+                </span>
+            </a>
+            <a href="/funcionario/Agenda/pabrlo">
+                <span class="card-item agt">
+                <small class="fixa">{{item.data}}Fixa:</small>
+                <h4>{{item.titulo}}Paciente</h4>
+                <small>{{item.data}}UBS</small>
+                </span>
+            </a>
+        </div>
+    </section >
     
     
 

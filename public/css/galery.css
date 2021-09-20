@@ -41,8 +41,9 @@
     overflow: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    height: 210px;
+    height: 200px;
     width: 80vw;
+    margin: 0 5px;
     display: flex;
 }
 .galery .galery-card::-webkit-scrollbar {
@@ -67,10 +68,18 @@
     flex-direction: column;
     margin: 0 1px;
     padding: 0 40px;
+    width: 200px;
 }
 .card-item h4, small{
     color: rgb(255, 255, 255);
     font-family: sans-serif;
+}
+.agt{
+    background: white;
+}
+.agt small,.agt h4{
+    color: black;
+    text-align: center;
 }
 @keyframes slide {
     0% {

@@ -1,0 +1,9 @@
+.agenda{
+    counter-reset: agenda;
+}
+.agenda .fixa{
+    counter-increment: agenda;
+}
+.agenda .fixa::after{
+    content: counter(agenda) '. ';
+}

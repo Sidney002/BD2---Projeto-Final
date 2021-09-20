@@ -31,12 +31,12 @@ router.get('/Agenda', async (req,res)=>{
         await agenda.Redis_client.keys("*", function(err,reply){
         if(reply!= null){
             arr.push(reply)
-            res.render("funcionario/verAgenda", {teste: reply})
+            res.render("funcionario/verAgenda", {agd: reply})
         }
         
         else{ 
             console.log("Nenhum agendamento cadastrado func")
-            res.render("funcionario/verAgenda")        }
+            res.render("funcionario/verAgenda")   }
            
       
     })
@@ -99,8 +99,9 @@ router.get('/delete/:titulo',async (req,res)=>{
     res.redirect('FuncPage')
 })
 
-router.get('/Paciente/:nome',(req,res)=>{
-    res.render('funcionario/verPaciente',{pac:pac})
+router.get('/Agenda/:nome',(req,res)=>{
+    const nome = req.params.nome
+    res.render('funcionario/verPaciente',{nome: nome})
 })
 
 router.post('/adicionarAgendamento',(req,res)=>{
