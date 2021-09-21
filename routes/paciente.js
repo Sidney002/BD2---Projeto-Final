@@ -27,10 +27,6 @@ router.get('/Entrar', (req,res)=>{
     res.render('logar')
 })
 
-router.get('/Sobre', (req,res)=>{
-    res.render('sobre')
-})
-
 router.get('/Ver-UBS', (req,res)=>{
     res.render('UBS')
 })
@@ -44,9 +40,11 @@ router.get('/Perfil',(req,res)=>{
     res.render("logado/userPage", {dados: req.session.login})
 })
 router.get('/Agendamentos', async(req,res)=>{
-    const agen = await agenda.get(req.session.login.nome);
-    console.log(agen)
-    res.render('logado/agenda', {agen : agen})
+    agenda.Redis_client.get(req.session.login.nome, (err,value)=>{
+        if(err) throw err
+        let at = JSON.parse(value)
+        res.render('logado/agenda', {agen : at})
+        })
 })
 router.get('/Agendar',(req,res)=>{
     res.render('logado/novoAgendamento')
@@ -137,6 +135,10 @@ router.post('/cadastro', async (req,res)=>{
     }
 
 })
+
+
+const UBS = require("../controler");
+    router.get("/destiny", UBS.BuscarUBS);
 
 //deslogar user
 

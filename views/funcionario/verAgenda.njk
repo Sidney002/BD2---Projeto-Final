@@ -6,41 +6,15 @@
     <section class="galery">
         <h4>UBS</h4>
         <div class="galery-card agenda">
-            <a href="/funcionario/Agenda/pabrlo">
+            {%for x in agd%}
+            <a href="/funcionario/Agenda/{{x}}">
                 <span class="card-item agt">
-                <small class="fixa">{{item.data}}Fixa:</small>
-                <h4>{{item.titulo}}Paciente</h4>
-                <small>{{item.data}}UBS</small>
+                <small class="fixa">Ficha:</small>
+                <h4>{{x}}</h4>
+                <small>UBS</small>
                 </span>
             </a>
-            <a href="/funcionario/Agenda/pabrlo">
-                <span class="card-item agt">
-                <small class="fixa">{{item.data}}Fixa:</small>
-                <h4>{{item.titulo}}Paciente</h4>
-                <small>{{item.data}}UBS</small>
-                </span>
-            </a>
-            <a href="/funcionario/Agenda/pabrlo">
-                <span class="card-item agt">
-                <small class="fixa">{{item.data}}Fixa:</small>
-                <h4>{{item.titulo}}Paciente</h4>
-                <small>{{item.data}}UBS</small>
-                </span>
-            </a>
-            <a href="/funcionario/Agenda/pabrlo">
-                <span class="card-item agt">
-                <small class="fixa">{{item.data}}Fixa:</small>
-                <h4>{{item.titulo}}Paciente</h4>
-                <small>{{item.data}}UBS</small>
-                </span>
-            </a>
-            <a href="/funcionario/Agenda/pabrlo">
-                <span class="card-item agt">
-                <small class="fixa">{{item.data}}Fixa:</small>
-                <h4>{{item.titulo}}Paciente</h4>
-                <small>{{item.data}}UBS</small>
-                </span>
-            </a>
+            {%endfor%}
         </div>
     </section >
     

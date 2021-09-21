@@ -8,10 +8,10 @@ function initMap() {
     center: center,
     zoom: 14,
   });
+  
 
   marker = new google.maps.Marker({
     map: map,
-    position: center,
     draggable: true,
   });
 
@@ -50,7 +50,8 @@ function save() {
 }
 
 const destiny = () => {
-  fetch("http://localhost:6006/destiny")
+console.log("Entrouuu")
+  fetch("http://localhost:6006/paciente/destiny")
     .then((res) => res.json())
     .then((data) => {
       const size = data.length;
@@ -59,10 +60,11 @@ const destiny = () => {
         lat: data[size - 1].st_x,
         lng: data[size - 1].st_y,
       };
+      console.log(point)
 
       map = new google.maps.Map(document.getElementById("map"), {
         center: point,
-        zoom: 4,
+        zoom: 14,
       });
 
       const marker = new google.maps.Marker({
@@ -83,3 +85,4 @@ const destiny = () => {
       });
     });
 };
+

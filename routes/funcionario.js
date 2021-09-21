@@ -11,7 +11,6 @@ router.get('/UBS',(req,res)=>{
     res.render('funcionario/adminUBS')
 })
 router.get('/FuncPage', async (req,res)=>{
-    console.log(req.session.login)
     res.render('funcionario/funcionario' , {dados: req.session.login})
 
 })
@@ -35,7 +34,8 @@ router.get('/Agenda', async (req,res)=>{
         
         else{ 
             console.log("Nenhum agendamento cadastrado func")
-            res.render("funcionario/verAgenda")   }
+            res.render("funcionario/verAgenda")
+        }
            
       
     })
@@ -99,9 +99,17 @@ router.get('/delete/:titulo',async (req,res)=>{
     res.redirect('FuncPage')
 })
 
-router.get('/Agenda/:nome',(req,res)=>{
+router.get('/Agenda/:nome', async(req,res)=>{
     const nome = req.params.nome
-    res.render('funcionario/verPaciente',{nome: nome})
+    agenda.Redis_client.get(nome, (err,value)=>{
+        if(err) {res.render('funcionario/VerPaciente',{nome: nome, ficha: err})}
+        console.log(value)
+        let at = JSON.parse(value)
+        console.log(at)
+        res.render('funcionario/VerPaciente',{nome: nome, ficha: at})
+    })
+    let err = "nenhum agendamento encontrado"
+    
 })
 
 router.post('/adicionarAgendamento',(req,res)=>{
